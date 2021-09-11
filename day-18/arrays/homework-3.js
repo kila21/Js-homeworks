@@ -1,4 +1,4 @@
-function rotate(arr, num, side) {
+function rotate(arr, num, side = "right") {
   if (!Array.isArray(arr)) {
     throw new Error("first parameter should be an array");
   } else if (!(typeof num === "number")) {
@@ -13,12 +13,14 @@ function rotate(arr, num, side) {
         arr.push(number);
         i++;
       }
-    } else {
+    } else if (side === "right") {
       while (i < num) {
         let number = arr.pop();
         arr.unshift(number);
         i++;
       }
+    } else {
+      throw new Error("third parameter should be 'right' or 'left'");
     }
     console.log(arr);
   }
@@ -28,7 +30,7 @@ try {
   const arr = [1, 2, 3];
   rotate(arr, 1, "left"); // result: [2,3,1]
   // rotate(arr, 1); // result: [3,1,2]
-  //   rotate(arr, 2); // result: [2,3,1]
+  // rotate(arr, 2); // result: [2,3,1]
 } catch (err) {
   console.log(err);
 }
