@@ -2,24 +2,21 @@ function f(arr) {
   if (!Array.isArray(arr)) {
     throw new Error("parameter should be an array");
   } else {
-    let newArray = [];
+    const res = arr.slice();
+    let i = 0;
     let sum = 0;
-    arr.forEach(flatten);
-    function flatten(el) {
-      if (Array.isArray(el)) {
-        return el.forEach(flatten, (element) => {
-          if (typeof element !== "number") {
-            throw new Error("should be a number");
-          }
-        });
-      } else if (!Array.isArray(el) && typeof el !== "number") {
-        throw new Error("should be a number in array");
+    while (i < res.length) {
+      if (Array.isArray(res[i])) {
+        res.splice(i, 1, ...res[i]);
+      } else if (!Array.isArray(res[i]) && typeof res[i] !== "number") {
+        throw new Error("should be a number or array");
+      } else {
+        i++;
       }
-      newArray.push(el); 
     }
-    for(item of newArray){
-      sum+=item;
-    }
+    res.forEach((el) => {
+      sum += el;
+    });
     console.log(sum);
   }
 }
@@ -36,6 +33,7 @@ try {
     ],
   ];
   f(arr);
+
   const arr2 = [[[[[1, 2]]]]];
   f(arr2); // 3
   const arr3 = [[[[[1, 2]]], 2], 1];
