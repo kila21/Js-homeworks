@@ -1,6 +1,6 @@
 function mix(...arg) {
   let result;
-  const object = { errors: [], value: arg.length - 1 };
+  const object = { errors: [] };
 
   for (let i = 0; i < arg.length; i++) {
     try {
@@ -17,6 +17,7 @@ function mix(...arg) {
       object.errors.push(errorObject);
     }
   }
+  object["value"] = result;
   return object;
 }
 
