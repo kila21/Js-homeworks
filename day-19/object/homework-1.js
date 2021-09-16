@@ -1,7 +1,10 @@
 function readingStatus(books) {
   for (book of books) {
-    if (book.haveRead) console.log("have read");
-    else console.log("havent");
+    console.log(
+      `${book.author} ${book.haveRead ? "have" : "haven't"} read ${
+        book.title
+      } ${book.haveRead ? "" : "yet"}`
+    );
   }
 }
 
