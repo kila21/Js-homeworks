@@ -3,9 +3,9 @@ Object.prototype.mergeDeepRight = function (data) {
     if (typeof data[prop] === "object") {
       if (!(prop in this)) {
         this[prop] = {};
-      }  else if (Array.isArray(data[prop])) {
+      } else if (Array.isArray(data[prop])) {
         for (i of data[prop]) {
-          this[prop].unshift(i)
+          this[prop].unshift(i);
         }
       }
       this[prop].mergeDeepRight(data[prop]);
@@ -29,9 +29,9 @@ const data = {
   },
 };
 
-Object.defineProperty(data, mergeDeepRight(),{
+Object.defineProperty(data, mergeDeepRight(), {
   enumerable: false,
-})
+});
 data.mergeDeepRight({
   age: 40,
   contact: {
@@ -43,5 +43,7 @@ data.mergeDeepRight({
   },
 });
 
-console.log(data);
-console.log(data.contact);
+console.log(JSON.stringify(data));
+
+// console.log(data)
+// console.log(data.contact);
