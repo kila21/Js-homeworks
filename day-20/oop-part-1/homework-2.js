@@ -22,27 +22,28 @@ function CoffeeMachine(power, capacity) {
   };
 
   this.setOnReady = function (cb) {
+    enabled = false;
     cb.call();
   };
 
   function onReady() {
     console.log("Coffee is ready");
-    CoffeeMachine.bind(this);
-    enabled = false;
-   
+    // CoffeeMachine.bind(this);
   }
 
   this.run = function () {
-    setTimeout(onReady, getTimeToBoil());
     enabled = true;
-    
+    setTimeout(function () {
+      enabled = false;
+      //   setOnReady();
+    }, getTimeToBoil());
   }.bind(this);
 
   this.isRunning = function () {
-    if(enabled === true) {
-        return true
-    }else {
-        return false;
+    if (enabled === true) {
+      return true;
+    } else {
+      return false;
     }
   };
 }
