@@ -36,6 +36,7 @@ function CoffeeMachine(power, capacity) {
     setTimeout(function () {
       enabled = false;
       //   setOnReady();
+      onReady();
     }, getTimeToBoil());
   }.bind(this);
 

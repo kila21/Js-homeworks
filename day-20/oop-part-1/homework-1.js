@@ -20,9 +20,7 @@ function CoffeeMachine(power, capacity) {
     return waterAmount;
   };
 
-  this.setOnReady = function (cb) {
-    cb.call();
-  };
+  this.setOnReady = function (cb) {};
 
   function onReady() {
     console.log("Coffee is ready");
