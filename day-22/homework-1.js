@@ -9,7 +9,7 @@ const send = function (url) {
       const status = meta.status;
       if (status === 200) {
         // console.log(status);
-        resolve([data[2].first_name + " " + data[2].last_name]);
+        resolve([data]);
       } else {
         reject(`We have error, status code: ${status}`);
       }
